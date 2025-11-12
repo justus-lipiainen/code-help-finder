@@ -4,64 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Custom Search Demo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        #search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        #query {
-            width: 300px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4285f4;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #3367d6;
-        }
-        #results {
-            margin-top: 20px;
-        }
-        .result {
-            background: white;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .result h3 {
-            margin: 0 0 5px 0;
-        }
-        .result a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        .result a:hover {
-            text-decoration: underline;
-        }
-        #error {
-            color: red;
-            text-align: center;
-        }
-    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/noTouch/notForYou.js"></script>
 </head>
 <body>
     <h1>Google Custom Search Demo</h1>
@@ -71,55 +17,5 @@
     </div>
     <div id="results"></div>
     <div id="error"></div>
-
-    <script>
-        const API_KEY = '{{API_KEY}}';  // Placeholder for API key (injected at build time)
-        const CSE_ID = '{{CSE_ID}}';    // Placeholder for CSE ID (injected at build time)
-
-        async function search() {
-            const query = document.getElementById('query').value.trim();
-            if (!query) {
-                alert('Please enter a search query.');
-                return;
-            }
-
-            const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=5`;  // Limit to 5 results
-
-            document.getElementById('results').innerHTML = 'Searching...';
-            document.getElementById('error').innerHTML = '';
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status} - ${response.statusText}`);
-                }
-                const data = await response.json();
-                displayResults(data.items || []);
-            } catch (error) {
-                document.getElementById('error').innerHTML = `Error: ${error.message}`;
-                document.getElementById('results').innerHTML = '';
-            }
-        }
-
-        function displayResults(results) {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '';
-
-            if (results.length === 0) {
-                resultsDiv.innerHTML = '<p>No results found.</p>';
-                return;
-            }
-
-            results.forEach(item => {
-                const resultDiv = document.createElement('div');
-                resultDiv.className = 'result';
-                resultDiv.innerHTML = `
-                    <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-                    <p>${item.snippet}</p>
-                `;
-                resultsDiv.appendChild(resultDiv);
-            });
-        }
-    </script>
 </body>
 </html>
