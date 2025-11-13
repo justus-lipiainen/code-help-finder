@@ -1,5 +1,5 @@
 const API_KEY = 'AIzaSyCUeTqSkHcoJTvBpTfvmtzn5UJ7pq_cbH0';
-const CSE_ID = '356bb56d9aadd499f';
+const CSE_ID = '13cbc1bdf1cb1475a';
 
 async function search() {
     const query = document.getElementById('query').value.trim();
