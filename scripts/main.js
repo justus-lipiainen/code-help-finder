@@ -52,6 +52,4 @@ async function webSearch() {
         $("#error").html(`Error: ${error.message}`);
         $("#results").html("");
     }
-
 };
-
