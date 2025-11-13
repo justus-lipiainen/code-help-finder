@@ -53,9 +53,3 @@ async function webSearch() {
         $("#results").html("");
     }
 };
-
-$(document).ready(function(){
-    const currentPath = window.location.pathname;
-    const newPath = currentPath + '/newsection';  
-    history.pushState({ path: newPath }, '', newPath);
-})
