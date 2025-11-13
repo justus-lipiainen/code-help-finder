@@ -16,7 +16,7 @@ function displayResults(results) {
 
     results.forEach(item => {
         const resultDiv = createDom("", "<div>", "", "#results");
-        resultDiv.className = 'result';
+        $(resultDiv).atrr("class", "result");
         resultDiv.html(`
             <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
             <p>${item.snippet}</p>
@@ -53,3 +53,9 @@ async function webSearch() {
         $("#results").html("");
     }
 };
+
+$(document).ready(function(){
+    const currentPath = window.location.pathname;
+    const newPath = currentPath + '/newsection';  
+    history.pushState({ path: newPath }, '', newPath);
+})
