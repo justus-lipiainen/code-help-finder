@@ -17,7 +17,7 @@ function displayResults(results) {
     results.forEach(item => {
         const resultDiv = createDom("", "<div>", "", "#results");
         $(resultDiv).attr("class", "result");
-        resultDiv.html(`
+        $(resultDiv).html(`
             <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
             <p>${item.snippet}</p>
         `);
@@ -52,4 +52,5 @@ async function webSearch() {
         $("#error").html(`Error: ${error.message}`);
         $("#results").html("");
     }
+
 };
