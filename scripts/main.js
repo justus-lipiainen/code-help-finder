@@ -15,7 +15,7 @@ function displayResults(results) {
     }
 
     results.forEach(item => {
-        const resultDiv = document.createElement('div');
+        const resultDiv = createDom("", "<div>", "", "#results");
         resultDiv.className = 'result';
         resultDiv.html(`
             <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
