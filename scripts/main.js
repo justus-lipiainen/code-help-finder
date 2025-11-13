@@ -42,3 +42,25 @@ function displayResults(results) {
         resultsDiv.appendChild(resultDiv);
     });
 }
+
+async function webSearch() {
+    const query = $("searchBar").value.trim();
+    if (!query) {
+        $("#error").html("No query writen")
+        return;
+    }
+
+    const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=25`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+        }
+        const data = await response.json();
+        displayResults(data.items || []);
+    } catch (error) {
+        $("#error").html(`Error: ${error.message}`);
+        $("#results").html("");
+    }
+};
