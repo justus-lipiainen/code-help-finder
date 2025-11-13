@@ -31,11 +31,11 @@ async function webSearch() {
     const intlDate = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
     console.log(intlDate);
 
-    const query = "What has Trump done " + intlDate;
+    const query = "What has Trump done on " + intlDate;
 
-    const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=9`;
+    const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=30`;
     
-    $("#results").html("Searching...");
+    $("#results").html("Loading...");
     $("#error").html("");
 
     try {
