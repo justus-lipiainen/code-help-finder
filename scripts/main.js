@@ -53,7 +53,7 @@ async function webSearch() {
         return;
     }
 
-    const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=25`;
+    const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=5`;
     
     $("#results").html("Searching...");
     $("#error").html("");
