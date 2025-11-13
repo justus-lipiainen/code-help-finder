@@ -11,7 +11,7 @@ async function search() {
     document.getElementById('error').innerHTML = '';
     
     try {
-        const response = await fetch(url);
+        const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=5`);
         if (!response.ok) {
             throw new Error(`API Error: ${response.status} - ${response.statusText}`);
         }
