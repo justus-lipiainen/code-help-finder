@@ -44,13 +44,16 @@ function displayResults(results) {
 }
 
 async function webSearch() {
-    const query = $("searchBar").val().trim();
+    const query = $("#searchBar").val().trim();
     if (!query) {
         $("#error").html("No query writen")
         return;
     }
 
     const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=25`;
+    
+    $("#results").html("Searching...");
+    $("#error").html("");
 
     try {
         const response = await fetch(url);
