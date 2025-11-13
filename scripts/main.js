@@ -1,17 +1,20 @@
+const API_KEY = 'AIzaSyCUeTqSkHcoJTvBpTfvmtzn5UJ7pq_cbH0';
+const CSE_ID = '356bb56d9aadd499';
+
 async function search() {
     const query = document.getElementById('query').value.trim();
     if (!query) {
-    alert('Please enter a search query.');
-    return;
+        alert('Please enter a search query.');
+        return;
     }
-    
+
     const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=5`;  // Limit to 5 results
-    
+
     document.getElementById('results').innerHTML = 'Searching...';
     document.getElementById('error').innerHTML = '';
-    
+
     try {
-        const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=5`);
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`API Error: ${response.status} - ${response.statusText}`);
         }
@@ -21,17 +24,17 @@ async function search() {
         document.getElementById('error').innerHTML = `Error: ${error.message}`;
         document.getElementById('results').innerHTML = '';
     }
-    }
-    
-    function displayResults(results) {
+}
+
+function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '';
-    
+
     if (results.length === 0) {
         resultsDiv.innerHTML = '<p>No results found.</p>';
         return;
     }
-    
+
     results.forEach(item => {
         const resultDiv = document.createElement('div');
         resultDiv.className = 'result';
