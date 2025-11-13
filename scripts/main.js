@@ -6,21 +6,21 @@ setTimeout(() => {
 }, 100);
 
 function displayResults(results) {
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = '';
+    const resultsDiv = $('#results');
+    $(resultsDiv).html("");
 
     if (results.length === 0) {
-        resultsDiv.innerHTML = '<p>No results found.</p>';
+        $(resultsDiv).html('<p>No results found.</p>');
         return;
     }
 
     results.forEach(item => {
         const resultDiv = document.createElement('div');
         resultDiv.className = 'result';
-        resultDiv.innerHTML = `
+        resultDiv.html(`
             <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
             <p>${item.snippet}</p>
-        `;
+        `);
         resultsDiv.appendChild(resultDiv);
     });
 }
