@@ -44,7 +44,7 @@ function displayResults(results) {
 }
 
 async function webSearch() {
-    const query = $("searchBar").value.trim();
+    const query = $("searchBar").val().trim();
     if (!query) {
         $("#error").html("No query writen")
         return;
