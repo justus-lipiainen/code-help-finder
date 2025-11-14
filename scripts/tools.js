@@ -3,7 +3,7 @@ function createDom(input, child, elmId, parent) {
     if (elmId != "") {
         $(child).attr("id", elmId);
     };
-    $(child).text(input);
+    $(child).html(input);
     console.log(child, elmId, parent);
     return child;
 };
