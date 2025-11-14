@@ -16,7 +16,7 @@ function displayResults(results) {
 
     results.forEach(item => {
         const resultDiv = $("<div>");
-        $(resultDiv).appendTo("#results");
+        $(resultDiv).appendTo(resultsDiv);
         $(resultDiv).attr("class", "result");
         $(resultDiv).html(`
             <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
