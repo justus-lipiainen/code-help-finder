@@ -35,7 +35,7 @@ async function webSearch() {
     $("title").html("What has trump done on: " + intlDate)
     $("#title").html("What has trump done on: " + intlDate)
 
-    const query = "What has Trump done on " + intlDate;
+    const query = "News about Trump on " + intlDate;
 
     const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CSE_ID}&q=${encodeURIComponent(query)}&num=9`;
 
