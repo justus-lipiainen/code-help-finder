@@ -22,7 +22,7 @@ function displayResults(results) {
             <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
             <p>${item.snippet}</p>
         `);
-        $(resultsDiv).appendTo(resultDiv);
+        $(resultDiv).appendTo(resultsDiv);
     });
 }
 
